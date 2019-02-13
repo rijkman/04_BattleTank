@@ -1,0 +1,5 @@
+1v1 kill tank
+schieten
+ruig terrein
+assets nodig: - tank
+programmeer AI
