@@ -2,6 +2,12 @@
 
 #include "TankAIController.h"
 
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	GetControlledTank()->AimAt(GetControlledTank()->GetActorLocation());
+}
+
 void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -35,5 +41,7 @@ ATank* ATankAIController::GetPlayerTank()
 		return 0;
 	}
 }
+
+
 
 
