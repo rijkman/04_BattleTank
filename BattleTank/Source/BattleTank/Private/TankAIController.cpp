@@ -5,7 +5,11 @@
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	GetControlledTank()->AimAt(GetControlledTank()->GetActorLocation());
+	if (GetPlayerTank())
+	{
+		GetControlledTank()->AimAt(GetControlledTank()->GetActorLocation());
+	}
+	
 }
 
 void ATankAIController::BeginPlay()
