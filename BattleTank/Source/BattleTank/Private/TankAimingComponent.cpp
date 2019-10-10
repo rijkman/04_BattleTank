@@ -18,6 +18,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 {
+	
 	if (!Barrel) { return; }
 
 	FVector OutLaunchVelocity;
@@ -36,6 +37,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 	
+
 	if (bHaveAimSolution == true)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
@@ -44,7 +46,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		MoveBarrelTowards(AimDirection);
 		//get rotation
 		//rotate barrel
-	//UE_LOG(LogTemp, Warning, TEXT("%s Firing at %s"), *TankName, *AimDirection.ToString())
 	}
 }
 
@@ -58,7 +59,5 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto BarrelRotation = Barrel->GetForwardVector().Rotation();
 	auto AimAsRotator = AimDirection.Rotation();
 	auto DeltaRotator = AimAsRotator - BarrelRotation;
-	UE_LOG(LogTemp, Warning, TEXT("Aim as Rotator: %s"), *DeltaRotator.ToString())
-
-	Barrel->Elevate(5); // TODO remove magic number
+	Barrel->Elevate(DeltaRotator.Pitch); // TODO remove magic number
 }
