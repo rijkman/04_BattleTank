@@ -39,3 +39,9 @@ void ATank::SetBarrelReference(UTankBarrel* BarrelToSet)
 	
 }
 
+void ATank::SetTurretRefference(UTurret* TurretToSet)
+{
+	TankAimingComponent->SetTurretRefference(TurretToSet);
+	UE_LOG(LogTemp, Warning, TEXT("Turret Refference Set"))
+}
+
